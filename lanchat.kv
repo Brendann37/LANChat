@@ -1,0 +1,48 @@
+#:kivy 2.1.0
+
+# Explicitly link this rule block to the MainLayout class in Python
+<MainLayout>:
+    orientation: 'vertical'
+    padding: dp(10)
+    spacing: dp(10)
+
+BoxLayout:
+    orientation: 'vertical'
+    padding: dp(10)
+    spacing: dp(10)
+
+    Label:
+        id: status_label # Added an id to potentially update later
+        text: 'Status: Offline'
+        size_hint_y: None # Don't stretch vertically
+        height: self.texture_size[1] # Set height based on text content
+
+    # Placeholder for User List (we'll use a RecycleView later)
+    ScrollView:
+        size_hint_y: 0.4 # Takes 40% of vertical space
+        Label:
+            text: 'User List Area (Placeholder)'
+
+    # Placeholder for Chat Area
+    ScrollView:
+        size_hint_y: 0.5 # Takes 50% of vertical space
+        Label:
+            text: 'Chat Area (Placeholder)'
+
+    # Input Area
+    BoxLayout:
+        size_hint_y: None # Don't stretch vertically
+        height: dp(40) # Fixed height
+        spacing: dp(10)
+
+        TextInput:
+            id: message_input
+            hint_text: 'Enter message...'
+            multiline: False
+            # We'll add on_text_validate later to handle sending
+
+        Button:
+            text: 'Send'
+            size_hint_x: None # Don't stretch horizontally
+            width: dp(80)
+            # We'll add on_press later
